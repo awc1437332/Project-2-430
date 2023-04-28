@@ -34,7 +34,7 @@ const sendPost = async (url, data, handler) => {
 };
 
 const hideError =() => {
-
+    document.getElementById('errorMessage').classList.add('hidden');
 };
 
 module.exports = {
