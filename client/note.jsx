@@ -34,4 +34,54 @@ const NoteForm = (props) => {
             <input className='noteSubmit' type='submit' value='Attach Note to Fridge'/>
         </form>
     )
-}
+};
+
+const noteList = (props) => {
+    if (props.notes.length === 0) {
+        return (
+            <div className='noteList'>
+                <h3 className='emptyNote'>No Notes yet.</h3>
+            </div>
+        );
+    }
+
+    const noteNodes = props.notes.map(note => {
+        return (
+            <div key={note._id} className='note'>
+                <h2 className='noteTitle'>{note.title}</h2>
+                <h3 className='noteContent'>{note.content}</h3>
+            </div>
+        );
+    });
+
+    return (
+        <div className='noteList'>
+            {noteNodes}
+        </div>
+    );
+};
+
+const loadNotes = async () => {
+    const response = await fetch('/getNotes');
+    const data = await response.json();
+    ReactDOM.render(
+        <NoteList notes={data.notes} />,
+        document.getElementById('notes')
+    );
+};
+
+const init = () => {
+    ReactDOM.render(
+        <NoteForm/>,
+        document.getElementById('makeNote')
+    );
+
+    ReactDOM.render(
+        <NoteList notes={[]} />,
+        document.getElementById('notes')
+    );
+
+    loadNotes();
+};
+
+window.onload = init;
