@@ -38,9 +38,7 @@ const handleSignup = (e) => {
         return false;
     }
 
-    console.log("Hold traveller");
     helper.sendPost(e.target.action, { username, pass, pass2, premium });
-    console.log("You may enter");
 
     return false;
 };
@@ -79,7 +77,7 @@ const SignupWindow = (props) => {
             <label htmlFor='pass'>Password: </label>
             <input id='pass2' type='password' name='pass2' placeholder='retype password' />
             <label htmlFor="premium">Premium? </label>
-            <input id="premium" type="checkbox" name="premium"/>
+            <input id="premium" type="checkbox" name="premium" />
             <label htmlFor='premium'> Yes.</label>
             <input className='formSubmit' type='submit' value='Sign up' />
         </form>

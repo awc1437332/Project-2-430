@@ -45,7 +45,7 @@ const NoteList = (props) => {
         );
     }
 
-    const noteNodes = props.notes.map(note => {
+    const notes = props.notes.map(note => {
         return (
             <div key={note._id} className='note'>
                 <h2 className='noteTitle'>{note.title}</h2>
@@ -55,9 +55,9 @@ const NoteList = (props) => {
     });
 
     return (
-        <div className='noteList'>
-            {noteNodes}
-        </div>
+        <section className='noteList'>
+            {notes}
+        </section>
     );
 };
 

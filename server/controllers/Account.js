@@ -26,7 +26,7 @@ const login = (req, res) => {
 
     req.session.account = Account.toAPI(account);
 
-    return res.json({ redirect: '/maker' });
+    return res.json({ redirect: '/note' });
   });
 };
 
@@ -59,10 +59,68 @@ const signup = async (req, res) => {
   }
 };
 
+const changeUser = async (req, res) => {
+  const newUsername = `${req.body.newUsername}`;
+  const { username } = req.session.account;
+
+  if (!newUsername) {
+    return res.status(400).json({ error: 'You must fill in the new username field.' });
+  }
+
+  if (username === newUsername) {
+    return res.status(400).json({ error: 'You are already using this Username!' });
+  }
+
+  try {
+    const checkForExisting = await Account.findOne({ username: newUsername }).lean().exec();
+    if (checkForExisting) {
+      return res.status(400).json({ error: 'This username is already in use, please try again.' });
+    }
+
+    const currentUser = await Account.findOne({ username: username });
+    currentUser.username = newUsername;
+    await currentUser.save();
+
+    req.session.account = Account.toAPI(currentUser);
+
+    return res.status(201).json({ message: 'Username changed successfully' });
+
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({ error: 'An error occurred changing the username' });
+  }
+};
+
+const changePass = async (req, res) => {
+  const newPass1 = `${req.body.newPass1}`;
+  const newPass2 = `${req.body.newPass2}`;
+
+  if (!newPass1 || !newPass2) {
+    return res.status(400).json({ error: "All fields are required to change your password" });
+  }
+
+  if (newPass1 !== newPass2) {
+    return res.status(400).json({ error: "Your new passwords do not match" });
+  }
+
+  try {
+    const currentUser = await Account.findOne({ username: req.session.account.username });
+
+    currentUser.password = await Account.generateHash(newPass1);
+    await currentUser.save();
+    return res.status(201).json({ message: "Your password has been changed!" });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({ error: 'An error occurred changing the password' });
+  }
+};
+
 module.exports = {
   loginPage,
-  login,
   accountSettingsPage,
+  login,
   logout,
   signup,
+  changeUser,
+  changePass,
 };
