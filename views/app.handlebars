@@ -9,8 +9,34 @@
   <nav><a href="/login"><img id="logo" src="/assets/img/note.png" alt="note logo"/></a>
     <div class="navlink"><a href="/logout">Log out</a></div>
   </nav>
+
+  <section id="createNote">
+    {{!-- <form id="noteForm" name="noteForm" action="/note" method="POST" class="noteForm">
+      <label for="title">Note Title: </label>
+      <input id="noteTitle" type="text" name="title" placeholder="Note Title"/>
+      <label for="content">Note Content: </label>
+      <input id="noteContent" type="text" name="content" placeholder="Note Content"/>
+      <input class="noteSubmit" type="submit" value="Create Note"/>
+    </form> --}}
   </section>
+
+  <section id="notes">
+    {{!-- {{#if notes}}
+      {{#each notes}}
+        <div class="note">
+          <h3 class="noteTitle">{{this.title}}</h2>
+          <p class="noteContent">{{this.content}}</p>
+        </div>
+      {{/each}}
+    {{else}}
+      <h3 class="emptyNote">No Notes yet</h3>
+    {{/if}} --}}
+  </section>
+
+  <div id="error" class="hidden">
+    <h3><span id="errorMessage"></span></h3>
+  </div>
   
-  <script src="/assets/bundle.js"></script>
+  <script src="/assets/appBundle.js"></script>
 </body>
 </html>
