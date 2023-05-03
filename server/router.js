@@ -15,6 +15,9 @@ const router = (app) => {
   app.get('/note', mid.requiresLogin, controllers.Note.notePage);
   app.get('/note', mid.requiresLogin, controllers.Note.makeNote);
 
+
+  app.get('/accountSettings', mid.requiresLogin, controllers.Account.accountSettingsPage);
+  
   // Default
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 

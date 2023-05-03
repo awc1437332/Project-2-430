@@ -4,6 +4,7 @@ module.exports = {
     entry: {
         app: './client/note.jsx',
         login: './client/login.jsx',
+        settings: './client/settings.jsx',
     },
     module: {
         rules: [

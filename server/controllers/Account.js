@@ -4,6 +4,8 @@ const { Account } = models;
 
 const loginPage = (req, res) => res.render('login');
 
+const accountSettingsPage = (req, res) => res.render('passChange');
+
 const logout = (req, res) => {
   req.session.destroy();
   res.redirect('/');
@@ -32,6 +34,7 @@ const signup = async (req, res) => {
   const username = `${req.body.username}`;
   const pass = `${req.body.pass}`;
   const pass2 = `${req.body.pass2}`;
+  const premium = `${req.body.premium}`;
 
   if (!username || !pass || !pass2) {
     return res.status(400).json({ error: 'All fields are required!" ' });
@@ -43,10 +46,10 @@ const signup = async (req, res) => {
 
   try {
     const hash = await Account.generateHash(pass);
-    const newAccount = new Account({ username, password: hash });
+    const newAccount = new Account({ username, password: hash, premium });
     await newAccount.save();
     req.session.account = Account.toAPI(newAccount);
-    return res.json({ redirect: '/maker' });
+    return res.json({ redirect: '/note' });
   } catch (err) {
     console.log(err);
     if (err.code === 11000) {
@@ -59,6 +62,7 @@ const signup = async (req, res) => {
 module.exports = {
   loginPage,
   login,
+  accountSettingsPage,
   logout,
   signup,
 };
