@@ -8,7 +8,6 @@ const notFoundPage = (req, res) => {
 
 
 
-
 module.exports = {
     notFoundPage,
 };

@@ -47,12 +47,12 @@ const ChangeUsernameWindow = (props) => {
             onSubmit={handleUserChange}
             action='/changeUser'
             method='POST'
-            className='mainForm'
+            className='settingsForm'
         >
             <h3 className='title'>Change Username Here</h3>
             <label htmlFor='changeUser'>New Username: </label>
             <input id='changeUser' type='text' name='changeUser' />
-            <input className='formSubmit' type='submit' value='Change Username' />
+            <input className='settingsSubmit' type='submit' value='Change Username' />
         </form>
     )
 }
@@ -64,13 +64,13 @@ const ChangePasswordWindow = (props) => {
             onSubmit={handlePassChange}
             action='/changePass'
             method='POST'
-            className='mainForm'>
+            className='settingsForm'>
             <h3 className='title'>Change Password Here</h3>
             <label htmlFor='newPass1'>New Password: </label>
             <input id='newPass1' type='text' name='newPass1' />
             <label htmlFor='newPass2'>Re-type New Password: </label>
             <input id='newPass2' type='text' name='newPass2' />
-            <input className='formSubmit' type='submit' value='Change Password' />
+            <input className='settingsSubmit' type='submit' value='Change Password' />
         </form>
     )
 }

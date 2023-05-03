@@ -14,13 +14,13 @@ const makeNote = async (req,res) => {
     const noteData = {
         title: req.body.title,
         content: req.body.content,
-        owner: req.session.account._id,
+        owner: req.session.account.username,
     };
 
     try {
         const newNote = new Note(noteData);
         await newNote.save();
-        return res.status(201).json({ title: newNote.title, content: newNote.content});
+        return res.status(201).json({ title: newNote.title, content: newNote.content, owner: newNote.owner});
     } catch (err) {
         console.log(err);
         if (err.code === 11000) {
@@ -32,10 +32,10 @@ const makeNote = async (req,res) => {
 
 const getNotes = async (req, res) => {
     try {
-        const query = { owner: req.session.account._id };
-        const docs = await Note.find(query).select('title content').lean().exec();
+        const query = { owner: req.session.account.username };
+        const docs = await Note.find(query).lean().exec();
 
-        return res.json({notes: docs});
+        return res.status(200).json({notes: docs});
     } catch (err) {
         console.log(err);
         return res.status(500).json({ error: 'Error retrieivng your notes.'});

@@ -13,6 +13,9 @@ const NoteSchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
+    owner: {
+        type: String,
+    },
     createdDate: {
         type: Date,
         default: Date.now,
