@@ -4,7 +4,7 @@ const { Account } = models;
 
 const loginPage = (req, res) => res.render('login');
 
-const accountSettingsPage = (req, res) => res.render('passChange');
+const accountSettingsPage = (req, res) => res.render('settings');
 
 const logout = (req, res) => {
   req.session.destroy();
