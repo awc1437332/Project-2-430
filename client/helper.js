@@ -3,7 +3,7 @@
    end in an error.
 */
 const handleError = (message) => {
-    document.getElementById('errorMessage').textContent = message;
+    //document.getElementById('errorMessage').textContent = message;
 };
 
 /* Sends post requests to the server using fetch. Will look for various
@@ -34,7 +34,7 @@ const sendPost = async (url, data, handler) => {
 };
 
 const hideError =() => {
-    document.getElementById('errorMessage').classList.add('hidden');
+    //document.getElementById('errorMessage').classList.add('hidden');
 };
 
 module.exports = {

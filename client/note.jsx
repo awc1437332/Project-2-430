@@ -36,7 +36,7 @@ const NoteForm = (props) => {
     )
 };
 
-const noteList = (props) => {
+const NoteList = (props) => {
     if (props.notes.length === 0) {
         return (
             <div className='noteList'>
@@ -73,7 +73,7 @@ const loadNotes = async () => {
 const init = () => {
     ReactDOM.render(
         <NoteForm/>,
-        document.getElementById('makeNote')
+        document.getElementById('createNote')
     );
 
     ReactDOM.render(
