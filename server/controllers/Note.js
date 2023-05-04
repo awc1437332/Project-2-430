@@ -58,9 +58,35 @@ const getNotes = async (req, res) => {
     }
 };
 
+const getNotesAZ = async (req, res) => {
+    try {
+        const query = { owner: req.session.account.username };
+        const docs = await Note.find(query).sort({title: 1}).lean().exec();
+
+        return res.status(200).json({ notes: docs });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ error: 'Error retrieivng your notes.' });
+    }
+};
+
+const getNotesZA = async (req, res) => {
+    try {
+        const query = { owner: req.session.account.username };
+        const docs = await Note.find(query).sort({title: -1}).lean().exec();
+
+        return res.status(200).json({ notes: docs });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ error: 'Error retrieivng your notes.' });
+    }
+};
+
 module.exports = {
     notePage,
     makeNote,
     deleteNote,
     getNotes,
+    getNotesAZ,
+    getNotesZA,
 };

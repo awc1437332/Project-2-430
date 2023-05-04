@@ -53,6 +53,15 @@ body {
     width: 25%;
 }
 
+#sorting {
+    display: flex;
+    width: 25%;
+}
+
+#sorting button {
+    margin: 20px;
+}
+
 #noteList {
     display: flex;
     text-align: center;

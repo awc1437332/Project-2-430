@@ -62,6 +62,15 @@ const NoteForm = (props) => {
     )
 };
 
+const PremiumNoteSorts = (props) => {
+    return (
+        <div id='sortingButtons'>
+            <button id="AtoZ" className='button is-link'>Sort A to Z</button>
+            <button id="ZtoA" className='button is-link'>Sort Z to A</button>
+        </div>
+    )
+}
+
 const NoteList = (props) => {
     if (props.notes.length === 0) {
         return (
@@ -112,11 +121,64 @@ const loadNotes = async () => {
     );
 };
 
-const init = () => {
+const loadNotesAZ = async () => {
+    const response = await fetch('/getNotesAZ');
+    const data = await response.json();
+    ReactDOM.render(
+        <NoteList notes={data.notes} />,
+        document.getElementById('notes')
+    );
+};
+
+const loadNotesZA = async () => {
+    const response = await fetch('/getNotesZA');
+    const data = await response.json();
+    ReactDOM.render(
+        <NoteList notes={data.notes} />,
+        document.getElementById('notes')
+    );
+};
+
+const checkPremium = async () => {
+    const response = await fetch('/checkPremium');
+    const data = await response.json();
+    if (data.premium) {
+        ReactDOM.render(
+            <PremiumNoteSorts />,
+            document.getElementById('sorting')
+        );
+        console.log("your buttons are made.")
+        return true;
+    }
+    return false;
+};
+
+const init = async () => {
     ReactDOM.render(
         <NoteForm />,
         document.getElementById('createNote')
     );
+
+    console.log('checking premium');
+    if(await checkPremium()) {
+        const aToZBtn = document.getElementById('AtoZ');
+        const zToABtn = document.getElementById('ZtoA');
+
+        console.log(aToZBtn);
+        console.log(zToABtn);
+
+        aToZBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            loadNotesAZ();
+            return false;
+        });
+
+        zToABtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            loadNotesZA();
+            return false;
+        });
+    }
 
     ReactDOM.render(
         <NoteList notes={[]} />,

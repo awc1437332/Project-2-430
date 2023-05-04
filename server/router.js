@@ -11,6 +11,10 @@ const router = (app) => {
 
   // Notes
   app.get('/getNotes', mid.requiresLogin, controllers.Note.getNotes);
+  app.get('/getNotesAZ', mid.requiresLogin, controllers.Note.getNotesAZ);
+  app.get('/getNotesZA', mid.requiresLogin, controllers.Note.getNotesZA);
+
+  app.get('/checkPremium', mid.requiresLogin, controllers.Account.checkPremium);
   app.get('/note', mid.requiresLogin, controllers.Note.notePage);
   app.post('/note', mid.requiresLogin, controllers.Note.makeNote);
   app.post('/deleteNote', mid.requiresLogin, controllers.Note.deleteNote);

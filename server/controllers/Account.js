@@ -59,6 +59,16 @@ const signup = async (req, res) => {
   }
 };
 
+const checkPremium = async (req, res) => {
+  try {
+    const premium = await Account.findOne({ username: req.session.account.username }).lean().exec();
+    return res.status(200).json({ premium: premium });
+  } catch (err) {
+    console.log(err)
+    return res.status(400).json({ error: "We could not complete the premium check" });
+  }
+}
+
 const changeUser = async (req, res) => {
   const newUsername = `${req.body.newUsername}`;
   const { username } = req.session.account;
@@ -121,6 +131,7 @@ module.exports = {
   login,
   logout,
   signup,
+  checkPremium,
   changeUser,
   changePass,
 };
