@@ -6,13 +6,13 @@ const connections = {
         http: {
             port: 3000,
         },
-        mongo: process.env.MONGODB_URI,
+        mongo: process.env.MONGODB_URI || 'mongodb://localhost:27017/',
         redis: process.env.REDISCLOUD_URL,
     },
     // Production
     production: {
         http: {
-            port: process.env.PORT || process.env.NODE_PORT,
+            port: process.env.PORT || process.env.NODE_PORT || 3000,
         },
         mongo: process.env.MONGODB_URI,
         redis: process.env.REDISCLOUD_URL,

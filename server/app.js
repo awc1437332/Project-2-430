@@ -14,7 +14,7 @@ const config = require('./config.js');
 const router = require('./router.js');
 
 // MONGO
-mongoose.connect(config.connections.mongo, (err) => {
+mongoose.connect(config.connections.mongo).catch(err => {
   if (err) {
     console.log('Could not connect to database');
     throw err;
