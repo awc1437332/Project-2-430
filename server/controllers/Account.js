@@ -2,10 +2,12 @@ const models = require('../models');
 
 const { Account } = models;
 
+// Handles the page renders
 const loginPage = (req, res) => res.render('login');
-
 const accountSettingsPage = (req, res) => res.render('settings');
+const notFoundPage = (req, res) => res.render('notFound');
 
+// Handles the login/logout/signup functions
 const logout = (req, res) => {
   req.session.destroy();
   res.redirect('/');
@@ -46,6 +48,7 @@ const signup = async (req, res) => {
 
   try {
     const hash = await Account.generateHash(pass);
+    console.log('hash created');
     const newAccount = new Account({ username, password: hash, premium });
     await newAccount.save();
     req.session.account = Account.toAPI(newAccount);
@@ -59,16 +62,18 @@ const signup = async (req, res) => {
   }
 };
 
+// Check for premium account
 const checkPremium = async (req, res) => {
   try {
     const premium = await Account.findOne({ username: req.session.account.username }).lean().exec();
-    return res.status(200).json({ premium: premium });
+    return res.status(200).json({ premium: premium.premium });
   } catch (err) {
     console.log(err)
     return res.status(400).json({ error: "We could not complete the premium check" });
   }
 }
 
+// Change user account information here
 const changeUser = async (req, res) => {
   const newUsername = `${req.body.newUsername}`;
   const { username } = req.session.account;
@@ -100,7 +105,7 @@ const changeUser = async (req, res) => {
     return res.status(400).json({ error: 'An error occurred changing the username' });
   }
 };
-//I AM BIG STINKY LMFAO
+
 const changePass = async (req, res) => {
   const newPass1 = `${req.body.newPass1}`;
   const newPass2 = `${req.body.newPass2}`;
@@ -128,6 +133,7 @@ const changePass = async (req, res) => {
 module.exports = {
   loginPage,
   accountSettingsPage,
+  notFoundPage,
   login,
   logout,
   signup,

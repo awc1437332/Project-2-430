@@ -2,10 +2,12 @@ const models = require('../models');
 
 const { Note } = models;
 
+// Renders the page
 const notePage = (req, res) => {
     res.render('app');
 };
 
+// Make and Delete notes
 const makeNote = async (req, res) => {
     if (!req.body.title || !req.body.content) {
         return res.status(400).json({ error: 'Both Note Title and Note Content are required.' });
@@ -46,6 +48,7 @@ const deleteNote = async (req, res) => {
     }
 };
 
+// Get Notes with assorted sorting functions
 const getNotes = async (req, res) => {
     try {
         const query = { owner: req.session.account.username };

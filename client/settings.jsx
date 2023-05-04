@@ -2,6 +2,7 @@ const helper = require('./helper.js');
 const React = require('react');
 const ReactDOM = require('react-dom');
 
+// Handles the changes to the user account information
 const handleUserChange = (e) => {
     e.preventDefault();
     helper.hideError();
@@ -40,6 +41,7 @@ const handlePassChange = (e) => {
     return false;
 }
 
+// Handles the changes to the window when the user wants to change information on their account.
 const ChangeUsernameWindow = (props) => {
     return (
         <form id="changeUsernameForm"
@@ -95,6 +97,7 @@ const ChangePasswordWindow = (props) => {
     )
 }
 
+// Init function
 const init = () => {
     const changeUserBtn = document.getElementById('changeUserBtn');
     const changePassBtn = document.getElementById('changePassBtn');

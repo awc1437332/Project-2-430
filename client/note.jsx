@@ -2,6 +2,7 @@ const helper = require('./helper.js');
 const React = require('react');
 const ReactDOM = require('react-dom');
 
+// Handler functions for making and deleting notes
 const handleNotes = (e) => {
     e.preventDefault();
     helper.hideError();
@@ -30,13 +31,12 @@ const deleteNote = (e, noteTitle) => {
         return false;
     }
 
-    console.log("You are about to delete a note");
-    console.log(e.target.action)
     helper.sendPost(e.target.action, { title });
 
     return false;
 }
 
+// Handler functions for the Note Form properties.
 const NoteForm = (props) => {
     return (
         <form id='noteForm'
@@ -112,6 +112,7 @@ const NoteList = (props) => {
     );
 };
 
+// Handler functions for loading in the notes. Sorting functions also included.
 const loadNotes = async () => {
     const response = await fetch('/getNotes');
     const data = await response.json();
@@ -142,30 +143,28 @@ const loadNotesZA = async () => {
 const checkPremium = async () => {
     const response = await fetch('/checkPremium');
     const data = await response.json();
-    if (data.premium) {
+    const premium = data.premium;
+    console.log(premium);
+    if (premium) {
         ReactDOM.render(
             <PremiumNoteSorts />,
             document.getElementById('sorting')
         );
-        console.log("your buttons are made.")
         return true;
     }
     return false;
 };
 
+// Init function
 const init = async () => {
     ReactDOM.render(
         <NoteForm />,
         document.getElementById('createNote')
     );
 
-    console.log('checking premium');
     if(await checkPremium()) {
         const aToZBtn = document.getElementById('AtoZ');
         const zToABtn = document.getElementById('ZtoA');
-
-        console.log(aToZBtn);
-        console.log(zToABtn);
 
         aToZBtn.addEventListener('click', (e) => {
             e.preventDefault();

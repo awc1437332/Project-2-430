@@ -9,6 +9,17 @@ body {
     overflow-x: hidden;
 }
 
+#notFoundBox {
+    margin: auto;
+    margin-top: 100px;
+    width: 50%;
+}
+
+#notFoundBox * {
+    margin: 20px;
+    font-size: 1.5em;
+}
+
 #logo {
     height: 100%;
     width: 100%;
@@ -66,6 +77,11 @@ body {
     display: flex;
     text-align: center;
     flex-flow: row wrap;
+}
+
+#noteList form {
+    margin: 10px;
+    border: 1.5px solid black;
 }
 
 .media {

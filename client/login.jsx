@@ -2,6 +2,7 @@ const helper = require('./helper.js');
 const React = require('react');
 const ReactDOM = require('react-dom');
 
+// Handler functions for login and signup
 const handleLogin = (e) => {
     e.preventDefault();
     helper.hideError();
@@ -26,7 +27,7 @@ const handleSignup = (e) => {
     const username = e.target.querySelector('#user').value;
     const pass = e.target.querySelector('#pass').value;
     const pass2 = e.target.querySelector('#pass2').value;
-    const premium = e.target.querySelector('#premium').checked;
+    const premium = e.target.querySelector('#premiumCheck').checked;
 
     if (!username || !pass || !pass2) {
         helper.handleError('All fields are required!');
@@ -43,6 +44,7 @@ const handleSignup = (e) => {
     return false;
 };
 
+// Handler functions for the login and signup windows
 const LoginWindow = (props) => {
     return (
         <form id="loginForm"
@@ -92,7 +94,7 @@ const SignupWindow = (props) => {
             </div>
             <div id="premium" className="field">
                 <label className='label' htmlFor="premium">Premium? </label>
-                <input id="premium" type="checkbox" name="premium" />
+                <input id="premiumCheck" type="checkbox" name="premiumCheck" />
             </div>
 
             <button className='button is-link' type='submit' value='Sign up'>Sign Up</button>
@@ -100,6 +102,7 @@ const SignupWindow = (props) => {
     )
 };
 
+// Init function
 const init = () => {
     const loginButton = document.getElementById('loginButton');
     const signupButton = document.getElementById('signupButton');
