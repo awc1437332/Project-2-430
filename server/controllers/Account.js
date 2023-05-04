@@ -68,10 +68,10 @@ const checkPremium = async (req, res) => {
     const premium = await Account.findOne({ username: req.session.account.username }).lean().exec();
     return res.status(200).json({ premium: premium.premium });
   } catch (err) {
-    console.log(err)
-    return res.status(400).json({ error: "We could not complete the premium check" });
+    console.log(err);
+    return res.status(400).json({ error: 'We could not complete the premium check' });
   }
-}
+};
 
 // Change user account information here
 const changeUser = async (req, res) => {
@@ -92,14 +92,13 @@ const changeUser = async (req, res) => {
       return res.status(400).json({ error: 'This username is already in use, please try again.' });
     }
 
-    const currentUser = await Account.findOne({ username: username });
+    const currentUser = await Account.findOne({ username });
     currentUser.username = newUsername;
     await currentUser.save();
 
     req.session.account = Account.toAPI(currentUser);
 
     return res.status(201).json({ message: 'Username changed successfully' });
-
   } catch (err) {
     console.log(err);
     return res.status(400).json({ error: 'An error occurred changing the username' });
@@ -111,11 +110,11 @@ const changePass = async (req, res) => {
   const newPass2 = `${req.body.newPass2}`;
 
   if (!newPass1 || !newPass2) {
-    return res.status(400).json({ error: "All fields are required to change your password" });
+    return res.status(400).json({ error: 'All fields are required to change your password' });
   }
 
   if (newPass1 !== newPass2) {
-    return res.status(400).json({ error: "Your new passwords do not match" });
+    return res.status(400).json({ error: 'Your new passwords do not match' });
   }
 
   try {
@@ -123,7 +122,7 @@ const changePass = async (req, res) => {
 
     currentUser.password = await Account.generateHash(newPass1);
     await currentUser.save();
-    return res.status(201).json({ message: "Your password has been changed!" });
+    return res.status(201).json({ message: 'Your password has been changed!' });
   } catch (err) {
     console.log(err);
     return res.status(400).json({ error: 'An error occurred changing the password' });
