@@ -1,4 +1,3 @@
-require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const compression = require('compression');
@@ -10,21 +9,23 @@ const helmet = require('helmet');
 const session = require('express-session');
 const RedisStore = require('connect-redis').default;
 const redis = require('redis');
+const config = require('./config.js');
 
 const router = require('./router.js');
 
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
-const dbURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/NoteOnTheFridge';
-mongoose.connect(dbURI).catch((err) => {
+// MONGO
+mongoose.connect(config.connections.mongo, (err) => {
   if (err) {
     console.log('Could not connect to database');
     throw err;
   }
 });
 
+// REDIS
 const redisClient = redis.createClient({
-  url: process.env.REDISCLOUD_URL,
+  url: config.connections.redis,
 });
 
 redisClient.on('error', (err) => console.log('Redis Client Error', err));
