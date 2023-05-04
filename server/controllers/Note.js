@@ -31,8 +31,20 @@ const makeNote = async (req, res) => {
 };
 
 const deleteNote = async (req, res) => {
+    const title = `${req.body.title}`;
 
-}
+    if (!title) {
+        return res.status(400).json({ error: "No note title was found to delete." });
+    }
+
+    try {
+        await Note.deleteOne({ owner: req.session.account.username, title: title }).lean().exec();
+        return res.status(200).json({ redirect: '/note' });
+    } catch (err) {
+        console.log(err)
+        return res.status(400).json({ message: "error occurred during note deletion." });
+    }
+};
 
 const getNotes = async (req, res) => {
     try {
@@ -49,5 +61,6 @@ const getNotes = async (req, res) => {
 module.exports = {
     notePage,
     makeNote,
+    deleteNote,
     getNotes,
 };

@@ -90,7 +90,7 @@ const changeUser = async (req, res) => {
     return res.status(400).json({ error: 'An error occurred changing the username' });
   }
 };
-
+//I AM BIG STINKY LMFAO
 const changePass = async (req, res) => {
   const newPass1 = `${req.body.newPass1}`;
   const newPass2 = `${req.body.newPass2}`;

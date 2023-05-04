@@ -19,6 +19,24 @@ const handleNotes = (e) => {
     return false;
 };
 
+const deleteNote = (e, noteTitle) => {
+    e.preventDefault();
+    helper.hideError();
+
+    const title = noteTitle;
+
+    if (!title) {
+        helper.handleError('Note Title not found');
+        return false;
+    }
+
+    console.log("You are about to delete a note");
+    console.log(e.target.action)
+    helper.sendPost(e.target.action, { title });
+
+    return false;
+}
+
 const NoteForm = (props) => {
     return (
         <form id='noteForm'
@@ -48,22 +66,33 @@ const NoteList = (props) => {
     if (props.notes.length === 0) {
         return (
             <div className='title'>
-                <h3 className='emptyNote'>No Notes yet.</h3>
+                <h3 className='m-3'>No Notes yet.</h3>
             </div>
         );
     }
 
     const notes = props.notes.map(note => {
         return (
-            <div key={note._id} className='media'>
+            <form id={note._id}
+                onSubmit={(e) => {
+                    deleteNote(e, note.title);
+                }}
+                name='note'
+                action='/deleteNote'
+                method='POST'
+                className='media'>
                 <div className='media-content'>
                     <h3 className='title'>{note.title}</h3>
                     <p className='content'>{note.content}</p>
                 </div>
                 <div className='media-right'>
-                    <button className='delete'></button>
+                    <button
+                        className='delete'
+                        type='submit'
+                        value='Delete Note'
+                    ></button>
                 </div>
-            </div>
+            </form>
         );
     });
 

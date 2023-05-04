@@ -13,6 +13,7 @@ const router = (app) => {
   app.get('/getNotes', mid.requiresLogin, controllers.Note.getNotes);
   app.get('/note', mid.requiresLogin, controllers.Note.notePage);
   app.post('/note', mid.requiresLogin, controllers.Note.makeNote);
+  app.post('/deleteNote', mid.requiresLogin, controllers.Note.deleteNote);
 
   // Settings
   app.get('/accountSettings', mid.requiresLogin, controllers.Account.accountSettingsPage);
