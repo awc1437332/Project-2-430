@@ -13,8 +13,6 @@ const config = require('./config.js');
 
 const router = require('./router.js');
 
-const port = process.env.PORT || process.env.NODE_PORT || 3000;
-
 // MONGO
 mongoose.connect(config.connections.mongo, (err) => {
   if (err) {
@@ -45,7 +43,7 @@ redisClient.connect().then(() => {
     store: new RedisStore({
       client: redisClient,
     }),
-    secret: 'I\'ve got a secret',
+    secret: config.secret,
     resave: false,
     saveUninitialized: false,
   }));
@@ -56,8 +54,8 @@ redisClient.connect().then(() => {
 
   router(app);
 
-  app.listen(port, (err) => {
+  app.listen(config.connections.http.port, (err) => {
     if (err) { throw err; }
-    console.log(`Listening on port ${port}`);
+    console.log(`Listening on port ${config.connections.http.port}`);
   });
 });
