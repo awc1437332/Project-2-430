@@ -1,19 +1,35 @@
 <html lang="en">
+
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Notes on the Fridge</title>
-  <link rel="shortcut icon" href="/assets/img/favicon.png"/>
-  <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
+  <link rel="shortcut icon" href="/assets/img/favicon.png" />
+  <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
-<body> 
-  <nav><a href="/login"><img id="logo" src="/assets/img/note.png" alt="note logo"/></a>
-    <div class="navlink"><a id="loginButton" href="/login">Login</a></div>
-    <div class="navlink"><a id="signupButton" href="/signup">Sign up</a></div>
+
+<body>
+  <nav class="navbar is-dark">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/login">
+        <img id="logo" src="/assets/img/note.png" alt="note logo" />
+      </a>
+    </div>
+    <a class="navbar-item" id="loginButton" href="/login">Login</a>
+    <a class="navbar-item" id="signupButton" href="/signup">Sign up</a>
   </nav>
-  <section id="content">
-    
-  </section>
+
+  <div id="contentArea">
+    <!-- Got this logo from https://www.adobe.com/express/create/logo -->
+    <img id="logoImage" src="/assets/img/free-logo.png" alt="Notes on the Fridge Logo" />
+
+    <section id="content">
+
+    </section>
+  </div>
 
   <script src="/assets/loginBundle.js"></script>
 </body>
+
 </html>

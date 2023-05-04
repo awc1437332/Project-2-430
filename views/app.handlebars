@@ -1,43 +1,40 @@
 <html lang="en">
+
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Notes on the Fridge</title>
-  <link rel="shortcut icon" href="/assets/img/favicon.png"/>
-  <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
+  <link rel="shortcut icon" href="/assets/img/favicon.png" />
+  <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
+
 <body>
-  <nav><a href="/login"><img id="logo" src="/assets/img/note.png" alt="note logo"/></a>
-    <div class="navlink"><a href="/logout">Log out</a></div>
-    <div class="navlink"><a href="/accountSettings">Account Settings</a></div>
+  <nav class="navbar is-dark">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/login">
+        <img id="logo" src="/assets/img/note.png" alt="note logo" />
+      </a>
+    </div>
+    <a class="navbar-item" href="/logout">Log out</a>
+    <a class="navbar-item" href="/accountSettings">Account Settings</a>
   </nav>
 
-  <section id="createNote">
-    {{!-- <form id="noteForm" name="noteForm" action="/note" method="POST" class="noteForm">
-      <label for="title">Note Title: </label>
-      <input id="noteTitle" type="text" name="title" placeholder="Note Title"/>
-      <label for="content">Note Content: </label>
-      <input id="noteContent" type="text" name="content" placeholder="Note Content"/>
-      <input class="noteSubmit" type="submit" value="Create Note"/>
-    </form> --}}
-  </section>
+  <div id="NoteContentArea">
+    <section id="createNote">
 
-  <section id="notes">
-    {{!-- {{#if notes}}
-      {{#each notes}}
-        <div class="note">
-          <h3 class="noteTitle">{{this.title}}</h2>
-          <p class="noteContent">{{this.content}}</p>
-        </div>
-      {{/each}}
-    {{else}}
-      <h3 class="emptyNote">No Notes yet</h3>
-    {{/if}} --}}
-  </section>
+    </section>
+
+    <section id="notes">
+
+    </section>
+  </div>
 
   <div id="error" class="hidden">
     <h3><span id="errorMessage"></span></h3>
   </div>
-  
+
   <script src="/assets/appBundle.js"></script>
 </body>
+
 </html>

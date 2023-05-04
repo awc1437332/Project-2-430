@@ -2,15 +2,20 @@
 
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Notes on the Fridge</title>
     <link rel="shortcut icon" href="/assets/img/favicon.png" />
     <link rel="stylesheet" type="text/css" href="/assets/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 
 <body>
-    <nav>
-        <div class="navlink"><a href="/logout">Log out</a></div>
-        <div class="navlink"><a href="/note">Note App</a></div>
+    <nav class="navbar is-dark">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/login"><img id="logo" src="/assets/img/note.png" alt="note logo" /></a>
+        </div>
+        <a class="navbar-item" href="/logout">Log out</a>
+        <a class="navbar-item" href="/note">Note App</a>
     </nav>
 
     <section id="accountSettings">

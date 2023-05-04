@@ -1,4 +1,7 @@
-html, body {
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+
+html,
+body {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -7,99 +10,94 @@ html, body {
 }
 
 #logo {
-    height: 40px;
-    width: 40;
+    height: 100%;
+    width: 100%;
     padding-top: 5px;
-    float:left;
+    float: left;
     border-radius: 8px;
 }
 
-nav {
-    width: 100%;
-    height: 50px;
-    background-color: #55acee;
+#premium {
+    display: flex;
+    flex-direction: row;
+    width: 10%;
 }
 
-nav:nth-child(1) {
-    padding-left: 25px;
+#contentArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
 }
 
-.navlink {
-    padding: 5px;
-    padding-top: 12px;
-    padding-left: 20px;
-    color: white;
-    font-size: 1.3em;
-    float: left;
-}
-
-.navlink a, .navlink a:link, .navlink a:visited, .navlink a:hover, .navlink a:active {
-    color: white;
-    text-decoration: none;
-    padding: 5px;
-    border-radius: 4px;
-    background-color: #55acee;
-    transition: background-color 0.4s ease;
-}
-
-.navlink a:hover {
-    transition: background-color 0.8s ease;
-    background-color: #66bdff;
-}
-
-.mainForm {
+#contentArea img {
     height: 300px;
-    width: 350px;
-    margin: 0 auto;
-    padding-top: 350px;
-    font-size: 1.2em;
+    width: 300px;
+    margin: 30px;
 }
 
-.mainForm h3 {
+#contentArea section {
+    width: 50%;
+    margin: 30px;
+}
+
+#content label {
+    margin: 10px;
+}
+
+#content input {
+    width: 100%;
+}
+
+#content button {
+    width: 25%;
+}
+
+#noteList {
+    display: flex;
     text-align: center;
+    flex-flow: row wrap;
 }
 
-.mainForm label {
-    display: inline-block;
-    width: 100px;
-    margin-right: 10px;
-    text-align: right;
-    font-size: 1.2em;
+.media {
+    width: 25%;
+    height: 300px;
+    padding: 20px;
+    background-color: yellow;
 }
 
-.formSubmit {
-    transition: background-color 0.4s ease;
+a.navbar-item {
+    color: white;
+}
+
+a.navbar-item:link a.navbar-item:hover {
+    color: black;
+}
+
+#accountSettings {
     display: block;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 14px;
-    font-size: 1.2em;
-    width: 100px;
-    background-color: #55acee;
-    border-radius: 2px;
-    border-color: #66acee;
-    padding: 3px 0px;
-    color: white;
-    text-decoration: none;
+    margin: 50px;
+    text-align: left;
+    font-size: 1.25em;
 }
 
-.formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
-    color: white;
+#editingForm {
+    width: 60%;
+    margin: 50px;
 }
 
-.formSubmit:hover {
-    transition: background-color 0.4s ease;
-    background-color: #338acc;
-}
-
-#user, #pass, #pass2 {
+#user,
+#pass,
+#pass2 {
     text-align: center;
     font-size: 1.1em;
     width: 180px;
     border-radius: 6px;
 }
 
-#user:focus, #pass:focus, #pass2:focus {
+#user:focus,
+#pass:focus,
+#pass2:focus {
     outline: none;
     box-shadow: 0px 0px 1px 1px #55acee;
 }
@@ -111,7 +109,7 @@ nav:nth-child(1) {
 #speech {
     height: 120px;
     width: 250px;
-    z-index:300;
+    z-index: 300;
 }
 
 #errorMessage {

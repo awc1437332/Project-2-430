@@ -50,13 +50,21 @@ const LoginWindow = (props) => {
             onSubmit={handleLogin}
             action="/login"
             method="POST"
-            className="mainForm"
+            className="box has-shadow"
         >
-            <label htmlFor="username">Username: </label>
-            <input id="user" type="text" name="username" placeholder="username" />
-            <label htmlFor="pass">Password: </label>
-            <input id="pass" type="password" name="pass" placeholder="password" />
-            <input className="formSubmit" type="submit" value="Sign in" />
+            <div className="field">
+                <label className='label' htmlFor="username">Username: </label>
+                <div className="control">
+                    <input className='input' id="user" type="text" name="username" placeholder="username" />
+                </div>
+            </div>
+            <div className="field">
+                <label className='label' htmlFor="pass">Password: </label>
+                <div className="control">
+                    <input className='input' id="pass" type="password" name="pass" placeholder="password" />
+                </div>
+            </div>
+            <button className="button is-link" type="submit" value="Log in">Log In</button>
         </form>
     )
 };
@@ -68,18 +76,26 @@ const SignupWindow = (props) => {
             onSubmit={handleSignup}
             action="/signup"
             method="POST"
-            className="mainForm"
+            className="box has-shadow"
         >
-            <label htmlFor="username">Username: </label>
-            <input id="user" type="text" name="username" placeholder='username' />
-            <label htmlFor='pass'>Password: </label>
-            <input id='pass' type='password' name='pass' placeholder='password' />
-            <label htmlFor='pass'>Password: </label>
-            <input id='pass2' type='password' name='pass2' placeholder='retype password' />
-            <label htmlFor="premium">Premium? </label>
-            <input id="premium" type="checkbox" name="premium" />
-            <label htmlFor='premium'> Yes.</label>
-            <input className='formSubmit' type='submit' value='Sign up' />
+            <div className="field">
+                <label className='label' htmlFor="username">Username: </label>
+                <div className="control"><input className="input" id="user" type="text" name="username" placeholder='username' /></div>
+            </div>
+            <field>
+                <label className='label' htmlFor='pass'>Password: </label>
+                <div className="control"><input className="input" id='pass' type='password' name='pass' placeholder='password' /></div>
+            </field>
+            <div className="field">
+                <label className='label' htmlFor='pass'>Password: </label>
+                <div className="control"><input className="input" id='pass2' type='password' name='pass2' placeholder='retype password' /></div>
+            </div>
+            <div id="premium" className="field">
+                <label className='label' htmlFor="premium">Premium? </label>
+                <input id="premium" type="checkbox" name="premium" />
+            </div>
+
+            <button className='button is-link' type='submit' value='Sign up'>Sign Up</button>
         </form>
     )
 };

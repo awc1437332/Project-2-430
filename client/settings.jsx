@@ -47,12 +47,20 @@ const ChangeUsernameWindow = (props) => {
             onSubmit={handleUserChange}
             action='/changeUser'
             method='POST'
-            className='settingsForm'
+            className='settingsForm box margin'
         >
-            <h3 className='title'>Change Username Here</h3>
-            <label htmlFor='changeUser'>New Username: </label>
-            <input id='changeUser' type='text' name='changeUser' />
-            <input className='settingsSubmit' type='submit' value='Change Username' />
+            <h3 className='subtitle'>Change Username Here</h3>
+            <div className='block'>
+                <div className="field">
+                    <label className='label' htmlFor='changeUser'>New Username: </label>
+                    <div className="control">
+                        <input className='input' id='changeUser' type='text' name='changeUser' />
+                    </div>
+                </div>
+                <div className="control">
+                    <input className='button is-link' type='submit' value='Change Username' />
+                </div>
+            </div>
         </form>
     )
 }
@@ -64,13 +72,25 @@ const ChangePasswordWindow = (props) => {
             onSubmit={handlePassChange}
             action='/changePass'
             method='POST'
-            className='settingsForm'>
-            <h3 className='title'>Change Password Here</h3>
-            <label htmlFor='newPass1'>New Password: </label>
-            <input id='newPass1' type='text' name='newPass1' />
-            <label htmlFor='newPass2'>Re-type New Password: </label>
-            <input id='newPass2' type='text' name='newPass2' />
-            <input className='settingsSubmit' type='submit' value='Change Password' />
+            className='settingsForm box'>
+            <h3 className='subtitle'>Change Password Here</h3>
+            <div className='block'>
+                <div className="field">
+                    <label className='label' htmlFor='newPass1'>New Password: </label>
+                    <div className='control'>
+                        <input className='input' id='newPass1' type='text' name='newPass1' />
+                    </div>
+                </div>
+                <div className="field">
+                    <label className='label' htmlFor='newPass2'>Re-type New Password: </label>
+                    <div className="control">
+                        <input className='input' id='newPass2' type='text' name='newPass2' />
+                    </div>
+                </div>
+                <div className="control">
+                    <input className='button is-link' type='submit' value='Change Password' />
+                </div>
+            </div>
         </form>
     )
 }
